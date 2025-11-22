@@ -1,13 +1,13 @@
 import { useState, useEffect } from "react";
 import { View, Text, Button, StyleSheet } from "react-native";
-import { Camera, CameraType, useCameraPermissions } from "expo-camera";
+import { Camera, CameraType } from "expo-camera";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 
 type Props = NativeStackScreenProps<any>;
 
 export default function CameraLoginScreen({ navigation }: Props) {
-  const [permission, requestPermission] = useCameraPermissions();
-  const [type] = useState<CameraType>("front");
+  const [permission, requestPermission] = Camera.useCameraPermissions();
+  const [type] = useState(CameraType.front);
 
   useEffect(() => {
     if (!permission) {
